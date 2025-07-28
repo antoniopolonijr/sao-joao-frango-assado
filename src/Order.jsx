@@ -1,13 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Food from "./Food";
+
+const intl = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+});
 
 export default function Order() {
   const [foodType, setFoodType] = useState("frango_assado");
   const [foodSize, setFoodSize] = useState("L");
+  const [foodTypes, setFoodTypes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  let price, selectedFood;
+  if (!loading) {
+    selectedFood = foodTypes.find((food) => foodType === food.id);
+    price = intl.format(selectedFood.sizes ? selectedFood.sizes[foodSize] : "");
+  }
+
+  useEffect(() => {
+    fetchFoodTypes();
+  }, []);
+
+  async function fetchFoodTypes() {
+    const foodsRes = await fetch("/api/foods");
+    const foodsJson = await foodsRes.json();
+    setFoodTypes(foodsJson);
+    setLoading(false);
+  }
 
   return (
     <div className="order">
-      <h2>Faça seu Pedido</h2>
+      <h2>Faça Seu Pedido</h2>
       <form>
         <div>
           <div>
@@ -17,9 +41,11 @@ export default function Order() {
               name="food-type"
               value={foodType}
             >
-              <option value="frango_assado">Frango Assado</option>
-              <option value="maionese">Maionese</option>
-              <option value="nhoque">Nhoque</option>
+              {foodTypes.map((food) => (
+                <option key={food.id} value={food.id}>
+                  {food.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -27,8 +53,8 @@ export default function Order() {
             <div>
               <span>
                 <input
-                  checked={foodSize === "S"}
                   onChange={(e) => setFoodSize(e.target.value)}
+                  checked={foodSize === "S"}
                   type="radio"
                   name="food-size"
                   value="S"
@@ -38,8 +64,8 @@ export default function Order() {
               </span>
               <span>
                 <input
-                  checked={foodSize === "M"}
                   onChange={(e) => setFoodSize(e.target.value)}
+                  checked={foodSize === "M"}
                   type="radio"
                   name="food-size"
                   value="M"
@@ -49,8 +75,8 @@ export default function Order() {
               </span>
               <span>
                 <input
-                  checked={foodSize === "L"}
                   onChange={(e) => setFoodSize(e.target.value)}
+                  checked={foodSize === "L"}
                   type="radio"
                   name="food-size"
                   value="L"
@@ -62,14 +88,18 @@ export default function Order() {
           </div>
           <button type="submit">Adicionar ao Carrinho</button>
         </div>
-        <div className="order-food">
-          <Food
-            name="Frango Assado"
-            description="Frango Assado com Farofa"
-            image="/public/foods/frango_assado.webp"
-          />
-          <p>R$ 50,00</p>
-        </div>
+        {loading ? (
+          <h3>CARREGANDO …</h3>
+        ) : (
+          <div className="order-food">
+            <Food
+              name={selectedFood.name}
+              description={selectedFood.description}
+              image={selectedFood.image}
+            />
+            <p>{price}</p>
+          </div>
+        )}
       </form>
     </div>
   );
