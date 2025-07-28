@@ -1,12 +1,17 @@
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Order from "./Order";
+import FoodOfTheDay from "./FoodOfTheDay";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="logo">São João Frango Assado</h1>
-      <Order />
-    </div>
+    <StrictMode>
+      <div>
+        <h1 className="logo">São João Frango Assado</h1>
+        <Order />
+        <FoodOfTheDay />
+      </div>
+    </StrictMode>
   );
 };
 
