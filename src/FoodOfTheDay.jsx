@@ -20,7 +20,7 @@ const FoodOfTheDay = () => {
           <h3>{foodOfTheDay.name}</h3>
           <p>{foodOfTheDay.description}</p>
           <p className="food-of-the-day-price">
-            a partir de: <span>{intl.format(foodOfTheDay.sizes.S)}</span>
+            a partir de: <span>{intl.format(foodOfTheDay.sizes.P)}</span>
           </p>
         </div>
         <img
