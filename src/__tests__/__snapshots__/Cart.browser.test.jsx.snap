@@ -1,0 +1,97 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshot with nothing in cart 1`] = `
+<DocumentFragment>
+  <div
+    class="cart"
+  >
+    <h2>
+      Carrinho
+    </h2>
+    <ul />
+    <p>
+      Total: R$ 0,00
+    </p>
+    <button>
+      Finalizar a Compra
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`snapshot with some stuff in cart 1`] = `
+<DocumentFragment>
+  <div
+    class="cart"
+  >
+    <h2>
+      Carrinho
+    </h2>
+    <ul>
+      <li>
+        <span
+          class="type"
+        >
+          Frango
+        </span>
+         – 
+        <span
+          class="size"
+        >
+          G
+        </span>
+         – 
+        <span
+          class="price"
+        >
+          R$ 50,00
+        </span>
+      </li>
+      <li>
+        <span
+          class="type"
+        >
+          Nhoque
+        </span>
+         – 
+        <span
+          class="size"
+        >
+          M
+        </span>
+         – 
+        <span
+          class="price"
+        >
+          R$ 24,00
+        </span>
+      </li>
+      <li>
+        <span
+          class="type"
+        >
+          Maionese
+        </span>
+         – 
+        <span
+          class="size"
+        >
+          M
+        </span>
+         – 
+        <span
+          class="price"
+        >
+          R$ 24,00
+        </span>
+      </li>
+    </ul>
+    <p>
+      Total: R$ 98,00
+    </p>
+    <button>
+      Finalizar a Compra
+    </button>
+  </div>
+</DocumentFragment>
+`;
