@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "./contexts";
 import Cart from "./Cart";
 import Food from "./Food";
 
@@ -12,7 +13,7 @@ export default function Order() {
   const [foodSize, setFoodSize] = useState("G");
   const [foodTypes, setFoodTypes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useContext(CartContext);
 
   async function checkout() {
     setLoading(true);
