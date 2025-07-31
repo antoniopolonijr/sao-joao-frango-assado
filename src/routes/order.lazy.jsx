@@ -54,16 +54,15 @@ function Order() {
     setLoading(false);
   }
 
+  function addToCart() {
+    setCart([...cart, { pizza: selectedFood, size: foodSize, price }]);
+  }
+
   return (
     <div className="order-page">
       <div className="order">
         <h2>Faça Seu Pedido</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setCart([...cart, { food: selectedFood, size: foodSize, price }]);
-          }}
-        >
+        <form action={addToCart}>
           <div>
             <div>
               <label htmlFor="food-type">Cardápio</label>
