@@ -1,3 +1,4 @@
+import { useFormStatus } from "react-dom";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import postContact from "../api/postContact";
@@ -8,9 +9,7 @@ export const Route = createLazyFileRoute("/contact")({
 
 function ContactRoute() {
   const mutation = useMutation({
-    mutationFn: function (e) {
-      e.preventDefault();
-      const formData = new FormData(e.target);
+    mutationFn: function (formData) {
       return postContact(
         formData.get("name"),
         formData.get("email"),
@@ -25,13 +24,25 @@ function ContactRoute() {
       {mutation.isSuccess ? (
         <h3>Enviado!</h3>
       ) : (
-        <form onSubmit={mutation.mutate}>
-          <input name="name" placeholder="Nome" />
-          <input type="email" name="email" placeholder="Email" />
+        <form action={mutation.mutate}>
+          <ContactInput name="name" type="text" placeholder="Nome" />
+          <ContactInput name="email" type="email" placeholder="Email" />
           <textarea placeholder="Mensagem" name="message"></textarea>
           <button>Enviar</button>
         </form>
       )}
     </div>
+  );
+}
+
+function ContactInput(props) {
+  const { pending } = useFormStatus();
+  return (
+    <input
+      disabled={pending}
+      name={props.name}
+      type={props.type}
+      placeholder={props.placeholder}
+    />
   );
 }
