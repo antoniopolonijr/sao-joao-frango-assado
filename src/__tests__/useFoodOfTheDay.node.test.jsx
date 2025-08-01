@@ -11,7 +11,7 @@ const testFood = {
   name: "Frango",
   category: "Carne",
   description: "Frango Assado com Farofa",
-  image: "/public/foods/frango_assado.webp",
+  image: "/foods/frango_assado.webp",
   sizes: { P: 0, M: 33, G: 50 },
 };
 
@@ -27,5 +27,6 @@ test("to call the API and give back the food of the day", async () => {
   await waitFor(() => {
     expect(result.current).toEqual(testFood);
   });
-  expect(fetchMocker).toBeCalledWith("/api/food-of-the-day");
+  const apiUrl = import.meta.env.VITE_API_URL;
+  expect(fetchMocker).toBeCalledWith(`${apiUrl}/api/food-of-the-day`);
 });

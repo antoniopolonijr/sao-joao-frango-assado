@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
 import createFetchMock from "vitest-fetch-mock";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -27,22 +27,21 @@ test("can submit contact form", async () => {
     message: "This is a test message",
   };
 
-  nameInput.value = testData.name;
-  emailInput.value = testData.email;
-  msgTextArea.value = testData.message;
+  fireEvent.change(nameInput, { target: { value: testData.name } });
+  fireEvent.change(emailInput, { target: { value: testData.email } });
+  fireEvent.change(msgTextArea, { target: { value: testData.message } });
 
-  const btn = screen.getByRole("button");
-
-  btn.click();
+  const form = screen.container.querySelector("form");
+  fireEvent.submit(form);
 
   const h3 = await screen.findByRole("heading", { level: 3 });
-
   expect(h3.innerText).toContain("Enviado!");
 
   const requests = fetchMocker.requests();
   expect(requests.length).toBe(1);
-  expect(requests[0].url).toBe("/api/contact");
-  expect(fetchMocker).toHaveBeenCalledWith("/api/contact", {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  expect(requests[0].url).toBe(`${apiUrl}/api/contact`);
+  expect(fetchMocker).toHaveBeenCalledWith(`${apiUrl}/api/contact`, {
     body: JSON.stringify(testData),
     headers: {
       "Content-Type": "application/json",

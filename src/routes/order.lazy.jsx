@@ -9,6 +9,8 @@ const intl = new Intl.NumberFormat("pt-BR", {
   currency: "BRL",
 });
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const Route = createLazyFileRoute("/order")({
   component: Order,
 });
@@ -23,7 +25,7 @@ function Order() {
   async function checkout() {
     setLoading(true);
 
-    await fetch("/api/order", {
+    await fetch(`${apiUrl}/api/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +50,7 @@ function Order() {
   }, []);
 
   async function fetchFoodTypes() {
-    const foodsRes = await fetch("/api/foods");
+    const foodsRes = await fetch(`${apiUrl}/api/foods`);
     const foodsJson = await foodsRes.json();
     setFoodTypes(foodsJson);
     setLoading(false);

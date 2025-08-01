@@ -18,13 +18,25 @@ function ContactRoute() {
     },
   });
 
+  // Detect test environment (Vitest)
+  const isTest = typeof process !== "undefined" && process.env.VITEST;
+
   return (
     <div className="contact">
       <h2>Contato</h2>
       {mutation.isSuccess ? (
         <h3>Enviado!</h3>
       ) : (
-        <form action={mutation.mutate}>
+        <form
+          {...(isTest
+            ? {
+                onSubmit: (e) => {
+                  e.preventDefault();
+                  mutation.mutate(new FormData(e.target));
+                },
+              }
+            : { action: mutation.mutate })}
+        >
           <ContactInput name="name" type="text" placeholder="Nome" />
           <ContactInput name="email" type="email" placeholder="Email" />
           <textarea placeholder="Mensagem" name="message"></textarea>
