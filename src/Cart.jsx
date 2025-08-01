@@ -21,7 +21,7 @@ export default function Cart({ cart, checkout }) {
           </li>
         ))}
       </ul>
-      <p>Total: {intl.format(total)}</p>
+      <p className="cart-total">Total: {intl.format(total)}</p>
       <button onClick={checkout}>Finalizar a Compra</button>
     </div>
   );

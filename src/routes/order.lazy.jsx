@@ -72,6 +72,7 @@ function Order() {
                 onChange={(e) => setFoodType(e.target.value)}
                 name="food-type"
                 value={foodType}
+                aria-label="Selecione o tipo de comida"
               >
                 {foodTypes.map((food) => (
                   <option key={food.id} value={food.id}>

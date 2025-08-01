@@ -87,38 +87,40 @@ function PastOrdersRoute({ loadedPromise, page, setPage }) {
       </div>
       {focusedOrder ? (
         <Modal>
-          <h2>Pedido #{focusedOrder}</h2>
-          {!isLoadingPastOrder ? (
-            <table>
-              <thead>
-                <tr>
-                  <td>Imagem</td>
-                  <td>Nome</td>
-                  <td>Tamanho</td>
-                  <td>Quantidade</td>
-                  <td>Preço</td>
-                  <td>Total</td>
-                </tr>
-              </thead>
-              <tbody>
-                {pastOrderData.orderItems.map((food) => (
-                  <tr key={`${food.foodTypeId}_${food.size}`}>
-                    <td>
-                      <img src={food.image} alt={food.name} />
-                    </td>
-                    <td>{food.name}</td>
-                    <td>{food.size}</td>
-                    <td>{food.quantity}</td>
-                    <td>{intl.format(food.price)}</td>
-                    <td>{intl.format(food.total)}</td>
+          <div className="modal-content">
+            <h2>Pedido #{focusedOrder}</h2>
+            {!isLoadingPastOrder ? (
+              <table>
+                <thead>
+                  <tr>
+                    <td>Imagem</td>
+                    <td>Nome</td>
+                    <td>Tamanho</td>
+                    <td>Quantidade</td>
+                    <td>Preço</td>
+                    <td>Total</td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p>Carregando …</p>
-          )}
-          <button onClick={() => setFocusedOrder()}>Fechar</button>
+                </thead>
+                <tbody>
+                  {pastOrderData.orderItems.map((food) => (
+                    <tr key={`${food.foodTypeId}_${food.size}`}>
+                      <td>
+                        <img src={food.image} alt={food.name} />
+                      </td>
+                      <td>{food.name}</td>
+                      <td>{food.size}</td>
+                      <td>{food.quantity}</td>
+                      <td>{intl.format(food.price)}</td>
+                      <td>{intl.format(food.total)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>Carregando …</p>
+            )}
+            <button onClick={() => setFocusedOrder()}>Fechar</button>
+          </div>
         </Modal>
       ) : null}
     </div>

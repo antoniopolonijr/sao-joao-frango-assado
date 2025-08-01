@@ -12,7 +12,7 @@ export const Route = createRootRoute({
     return (
       <>
         <CartContext.Provider value={cartHook}>
-          <div>
+          <div className="app-container">
             <Header />
             <Outlet />
             <FoodOfTheDay />

@@ -10,10 +10,14 @@ export default function Header() {
         <h1 className="logo">São João Frango Assado</h1>
       </Link>
       <div className="nav-cart">
-        🛒
-        <span data-testid="cart-number" className="nav-cart-number">
-          {cart.length}
-        </span>
+        <Link to={"/order"} arial-label="Carrinho de Compras">
+          <div>
+            🛒
+            <span data-testid="cart-number" className="nav-cart-number">
+              {cart.length}
+            </span>
+          </div>
+        </Link>
       </div>
     </nav>
   );
