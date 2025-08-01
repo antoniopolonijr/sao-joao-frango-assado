@@ -17,7 +17,7 @@ test("snapshot with some stuff in cart", () => {
             name: "Frango",
             category: "Carne",
             description: "Frango Assado com Farofa",
-            image: "/public/foods/frango_assado.webp",
+            image: "/foods/frango_assado.webp",
             sizes: {
               P: 0,
               M: 33,
@@ -33,7 +33,7 @@ test("snapshot with some stuff in cart", () => {
             name: "Nhoque",
             category: "Massa",
             description: "Nhoque de Batata à Bolonhesa",
-            image: "/public/foods/nhoque.webp",
+            image: "/foods/nhoque.webp",
             sizes: {
               P: 0,
               M: 24,
@@ -49,7 +49,7 @@ test("snapshot with some stuff in cart", () => {
             name: "Maionese",
             category: "Acompanhamento",
             description: "Salada de Maionese com Legumes",
-            image: "/public/foods/maionese.webp",
+            image: "/foods/maionese.webp",
             sizes: {
               P: 0,
               M: 24,
