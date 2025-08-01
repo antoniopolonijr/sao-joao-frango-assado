@@ -240,6 +240,7 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   padding: 10px;
 }
 
@@ -297,7 +298,8 @@ button:disabled {
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   max-width: 700px;
-  margin: 120px 10px;
+  padding: 10px;
+  margin: 120px auto;
   align-items: center;
 }
 
