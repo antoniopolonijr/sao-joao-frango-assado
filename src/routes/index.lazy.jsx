@@ -7,7 +7,7 @@ export const Route = createLazyFileRoute("/")({
 function Index() {
   return (
     <div className="index">
-      <img src="../sao_joao_frango_assado.svg" alt="São João Frango Assado" />
+      <img src="../favicon.svg" alt="São João Frango Assado" />
       <ul>
         <li>
           <Link to="/order">Faça Seu Pedido</Link>
