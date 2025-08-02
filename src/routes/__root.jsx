@@ -18,8 +18,8 @@ export const Route = createRootRoute({
             <FoodOfTheDay />
           </div>
         </CartContext.Provider>
-        <TanStackRouterDevtools />
-        <ReactQueryDevtools />
+        {import.meta.env.MODE === "development" && <TanStackRouterDevtools />}
+        {import.meta.env.MODE === "development" && <ReactQueryDevtools />}
       </>
     );
   },
