@@ -3,7 +3,7 @@
   --secondary: #759b4c;
   --background: cornsilk;
   --border: #ccc;
-  --font: cursive, sans-serif;
+  --font: Pacifico, cursive, sans-serif;
 }
 
 * {
@@ -91,6 +91,11 @@ nav > a {
   height: 25px;
   font-size: 18px;
   border-radius: 50%;
+}
+
+@font-face {
+  font-family: Pacifico;
+  src: url("/Pacifico-Regular.ttf");
 }
 
 h2 {
@@ -500,7 +505,7 @@ td img {
 
   .logo,
   h2 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .food img {
