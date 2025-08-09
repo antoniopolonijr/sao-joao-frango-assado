@@ -67,60 +67,58 @@ function Order() {
         <form action={addToCart}>
           <div>
             <div>
-              <label htmlFor="food-type">Cardápio</label>
+              <label htmlFor="food-type">
+                Cardápio <span aria-hidden="true">*</span>
+              </label>
               <select
-                onChange={(e) => setFoodType(e.target.value)}
+                id="food-type"
                 name="food-type"
                 value={foodType}
-                aria-label="Selecione o tipo de comida"
+                onChange={(e) => setFoodType(e.target.value)}
+                required
+                aria-required="true"
+                aria-describedby="food-type-desc"
               >
+                <option value="" disabled>
+                  Selecione o tipo de comida
+                </option>
                 {foodTypes.map((food) => (
                   <option key={food.id} value={food.id}>
                     {food.name}
                   </option>
                 ))}
               </select>
+              <span id="food-type-desc" className="sr-only">
+                Campo obrigatório: escolha o tipo de comida desejado.
+              </span>
             </div>
+
             <div>
-              <label htmlFor="food-size">Tamanho</label>
-              <div>
-                <span>
-                  <input
-                    onChange={(e) => setFoodSize(e.target.value)}
-                    checked={foodSize === "P"}
-                    type="radio"
-                    name="food-size"
-                    value="P"
-                    id="food-s"
-                  />
-                  <label htmlFor="food-s">Pequeno</label>
-                </span>
-                <span>
-                  <input
-                    onChange={(e) => setFoodSize(e.target.value)}
-                    checked={foodSize === "M"}
-                    type="radio"
-                    name="food-size"
-                    value="M"
-                    id="food-m"
-                  />
-                  <label htmlFor="food-m">Médio</label>
-                </span>
-                <span>
-                  <input
-                    onChange={(e) => setFoodSize(e.target.value)}
-                    checked={foodSize === "G"}
-                    type="radio"
-                    name="food-size"
-                    value="G"
-                    id="food-l"
-                  />
-                  <label htmlFor="food-l">Grande</label>
-                </span>
-              </div>
+              <label htmlFor="food-size">
+                Tamanho <span aria-hidden="true">*</span>
+              </label>
+              <select
+                id="food-size"
+                name="food-size"
+                value={foodSize}
+                onChange={(e) => setFoodSize(e.target.value)}
+                required
+                aria-required="true"
+                aria-describedby="food-size-desc"
+              >
+                <option value="" disabled>
+                  Selecione o tamanho
+                </option>
+                <option value="P">Pequeno</option>
+                <option value="M">Médio</option>
+                <option value="G">Grande</option>
+              </select>
+              <span id="food-size-desc" className="sr-only">
+                Campo obrigatório: escolha o tamanho do alimento.
+              </span>
             </div>
-            <button type="submit">Adicionar ao Carrinho</button>
           </div>
+
           {loading ? (
             <h3>CARREGANDO …</h3>
           ) : (
@@ -133,6 +131,8 @@ function Order() {
               <p>{price}</p>
             </div>
           )}
+
+          <button type="submit">Adicionar ao Carrinho</button>
         </form>
       </div>
       {loading ? (
