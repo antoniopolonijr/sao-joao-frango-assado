@@ -66,7 +66,10 @@ function PastOrdersRoute({ loadedPromise, page, setPage }) {
           {data.map((order) => (
             <tr key={order.order_id}>
               <td>
-                <button onClick={() => setFocusedOrder(order.order_id)}>
+                <button
+                  aria-label={`Pedido ${order.order_id}`}
+                  onClick={() => setFocusedOrder(order.order_id)}
+                >
                   {order.order_id}
                 </button>
               </td>
@@ -77,11 +80,19 @@ function PastOrdersRoute({ loadedPromise, page, setPage }) {
         </tbody>
       </table>
       <div className="pages">
-        <button disabled={page <= 1} onClick={() => setPage(page - 1)}>
+        <button
+          aria-label="Página Anterior"
+          disabled={page <= 1}
+          onClick={() => setPage(page - 1)}
+        >
           Anterior
         </button>
         <div>{page}</div>
-        <button disabled={data.length < 10} onClick={() => setPage(page + 1)}>
+        <button
+          aria-label="Próxima Página"
+          disabled={data.length < 10}
+          onClick={() => setPage(page + 1)}
+        >
           Próxima
         </button>
       </div>

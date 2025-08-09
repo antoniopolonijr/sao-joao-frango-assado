@@ -37,10 +37,63 @@ function ContactRoute() {
               }
             : { action: mutation.mutate })}
         >
-          <ContactInput name="name" type="text" placeholder="Nome" />
-          <ContactInput name="email" type="email" placeholder="Email" />
-          <textarea placeholder="Mensagem" name="message"></textarea>
-          <button>Enviar</button>
+          <div>
+            <label htmlFor="contact-name">
+              Nome <span aria-hidden="true">*</span>
+            </label>
+            <ContactInput
+              id="contact-name"
+              name="name"
+              type="text"
+              required
+              aria-required="true"
+              aria-describedby="name-desc"
+              autoComplete="name"
+              placeholder="Seu nome"
+            />
+            <span id="name-desc" className="sr-only">
+              Campo obrigatório: informe seu nome completo.
+            </span>
+          </div>
+
+          <div>
+            <label htmlFor="contact-email">
+              Email <span aria-hidden="true">*</span>
+            </label>
+            <ContactInput
+              id="contact-email"
+              name="email"
+              type="email"
+              required
+              aria-required="true"
+              aria-describedby="email-desc"
+              autoComplete="email"
+              placeholder="Seu e-mail"
+            />
+            <span id="email-desc" className="sr-only">
+              Campo obrigatório: informe um e-mail válido.
+            </span>
+          </div>
+
+          <div>
+            <label htmlFor="contact-message">
+              Mensagem <span aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              aria-required="true"
+              aria-describedby="message-desc"
+              autoComplete="off"
+              placeholder="Sua mensagem"
+            />
+            <span id="message-desc" className="sr-only">
+              Descreva sua mensagem. Campo obrigatório.
+            </span>
+          </div>
+
+          <button type="submit">Enviar mensagem</button>
         </form>
       )}
     </div>
@@ -49,12 +102,5 @@ function ContactRoute() {
 
 function ContactInput(props) {
   const { pending } = useFormStatus();
-  return (
-    <input
-      disabled={pending}
-      name={props.name}
-      type={props.type}
-      placeholder={props.placeholder}
-    />
-  );
+  return <input disabled={pending} {...props} />;
 }

@@ -1,6 +1,6 @@
 :root {
-  --primary: #74421f;
-  --secondary: #759b4c;
+  --primary: #563117;
+  --secondary: #455b2d;
   --background: cornsilk;
   --border: #ccc;
   --font: Pacifico, cursive, sans-serif;
@@ -54,7 +54,7 @@ nav {
   padding-top: 20px;
   color: var(--secondary);
   font-family: var(--font);
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 500;
 }
 
@@ -74,7 +74,7 @@ nav > a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
+  font-size: 36px;
   padding-right: 7px;
 }
 
@@ -85,8 +85,8 @@ nav > a {
   align-items: center;
   justify-content: center;
   position: relative;
-  top: -60px;
-  left: 46px;
+  top: -61px;
+  left: 37px;
   width: 26px;
   height: 25px;
   font-size: 18px;
@@ -100,7 +100,7 @@ nav > a {
 
 h2 {
   font-family: var(--font);
-  font-size: 40px;
+  font-size: 28px;
   line-height: auto;
   font-weight: 400;
   color: var(--primary);
@@ -113,40 +113,30 @@ h2 {
   padding: 15px;
 }
 
-form div {
-  margin: 10px 0;
+.order form div {
   text-align: center;
 }
 
-form > div {
-  padding: 15px;
-  width: 100%;
-}
-
-form > div:first-child {
-  border-right: 1px solid #ccc;
-}
-
-form > div > div > label {
+.order form > div > div > label {
   display: block;
-  font-size: 20px;
+  font-size: 22px;
   color: var(--secondary);
   margin-bottom: 10px;
 }
 
-form select {
+.order form select {
   display: block;
-  font-size: 16px;
-  padding: 5px;
-  margin-bottom: 30px;
+  font-size: 18px;
+  padding: 8px;
+  margin-bottom: 25px;
   width: 100%;
 }
 
-form input[type="radio"] {
+.order form input[type="radio"] {
   display: none;
 }
 
-form input + label {
+.order form input + label {
   height: 80px;
   width: 80px;
   border: 1px solid var(--border);
@@ -160,17 +150,16 @@ form input + label {
   margin: 0 15px 10px 15px;
 }
 
-form input:checked + label {
+.order form input:checked + label {
   color: var(--primary);
   background-color: #fff;
 }
 
-form > div > div > label {
+.order form > div > div > label {
   display: block;
-  font-size: 20px;
+  font-size: 22px;
   color: var(--secondary);
   margin-bottom: 10px;
-  font-size: 20px;
   color: var(--secondary);
   font-family: var(--font);
   font-weight: 500;
@@ -186,20 +175,23 @@ form > div > div > label {
   border-radius: 5px;
 }
 
-.food h1 {
-  font-weight: normal;
-  color: var(--secondary);
-  font-size: 25px;
-}
-
 .food p {
   margin-bottom: 5px;
 }
 
 .order form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
 
-  justify-content: space-between;
+.order form button {
+  margin-top: 20px;
+}
+
+.order p {
+  margin-top: 5px;
 }
 
 button,
@@ -208,7 +200,7 @@ button,
   background-color: var(--border);
   color: var(--primary);
   font-family: var(--font);
-  font-size: 20px;
+  font-size: 18px;
   padding: 5px 15px;
   border-radius: 5px;
   display: inline-block;
@@ -218,11 +210,6 @@ button,
 button:disabled {
   opacity: 0.5;
   background-color: #ccc;
-}
-
-.order-food {
-  width: 100%;
-  margin-left: 25px;
 }
 
 .food {
@@ -235,18 +222,20 @@ button:disabled {
 
 .food-of-the-day {
   border-top: 1px solid var(--border);
-  margin-top: 50px;
+  margin-top: 15px;
   width: 100%;
   color: var(--primary);
   font-family: var(--font);
+  margin: 25px 0 15px 0;
 }
 
 .food-of-the-day > div {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
   padding: 10px;
+  margin: auto;
 }
 
 .food-of-the-day > h2 {
@@ -261,7 +250,6 @@ button:disabled {
 }
 
 .food-of-the-day-info {
-  margin-right: 30px;
   line-height: 2;
   text-align: center;
 }
@@ -269,6 +257,7 @@ button:disabled {
 .food-of-the-day-info > h3 {
   color: var(--secondary);
   font-weight: 500;
+  font-size: 22px;
 }
 
 .order-page {
@@ -288,14 +277,22 @@ button:disabled {
 }
 
 .cart p {
-  margin: 15px 0;
+  margin: 20px 0 15px 0;
+}
+
+.cart button {
+  margin-top: 20px;
+}
+
+.cart li {
+  margin: 5px;
 }
 
 .index h1 {
   color: var(--primary);
   font-family: var(--font);
   font-weight: normal;
-  font-size: 25px;
+  font-size: 36px;
 }
 
 .index {
@@ -304,7 +301,7 @@ button:disabled {
   gap: 30px;
   max-width: 700px;
   padding: 10px;
-  margin: 50px auto;
+  margin: auto;
   align-items: center;
 }
 
@@ -335,10 +332,10 @@ button:disabled {
 }
 
 .past-orders {
-  min-height: 650px;
   max-width: 900px;
   width: 90%;
-  margin: 0 auto;
+  margin: auto;
+  padding: 15px 0 15px 0;
 }
 
 .past-orders h2 {
@@ -348,8 +345,8 @@ button:disabled {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
+  margin: 15px 0 25px 0;
+  font-size: 18px;
   font-family: sans-serif;
   border: 2px solid var(--secondary);
 }
@@ -360,9 +357,13 @@ thead tr {
   text-align: left;
 }
 
+thead tr td {
+  color: #ffffff;
+}
+
 th,
 td {
-  padding: 12px 15px;
+  padding: 12px 10px;
   text-align: center;
   font-family: var(--font);
   color: var(--primary);
@@ -390,7 +391,7 @@ tbody tr:last-of-type {
 .pages > div {
   font-family: var(--font);
   color: var(--primary);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #modal {
@@ -441,21 +442,36 @@ td img {
   text-decoration: underline;
 }
 
+.contact {
+  margin: 15px 0 30px 0;
+}
+
 .contact form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  gap: 20px;
+  margin: 15px auto;
+}
+
+.contact label {
+  font-family: var(--font);
+  color: var(--primary);
+  font-size: 18px;
+  margin-right: 10px;
+  vertical-align: top;
+  display: inline-block;
+  width: 98px;
+  text-align: right;
 }
 
 .contact input,
 .contact textarea {
-  width: 75%;
+  width: 468px;
   padding: 8px;
   border: 2px solid var(--border);
   border-radius: 5px;
-  margin-bottom: 15px;
-  margin-top: 15px;
 }
 
 .contact textarea {
@@ -477,21 +493,33 @@ td img {
   text-align: center;
   margin: 50px;
   font-weight: normal;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .cart-total {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--secondary);
   margin-top: 20px;
 }
 
 .food > h3 {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--secondary);
   font-family: var(--font);
   font-weight: 500;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
 }
 
 @media (max-width: 700px) {
@@ -501,11 +529,16 @@ td img {
 
   .cart {
     border-left: none;
+    border-top: 1px solid var(--border);
+    margin-top: 15px;
   }
 
-  .logo,
+  .logo {
+    font-size: 28px;
+  }
+
   h2 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .food img {
@@ -520,6 +553,19 @@ td img {
     max-width: 98vw;
     max-height: 98vh;
     padding: 8px;
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  .contact input,
+  .contact textarea {
+    width: 168px;
+  }
+
+  .index {
+    display: block;
+  }
+
+  .food-of-the-day > div {
+    flex-direction: column-reverse;
   }
 }
