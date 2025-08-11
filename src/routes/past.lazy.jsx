@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Suspense, useState, use } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from "@tanstack/react-router";
@@ -130,10 +131,48 @@ function PastOrdersRoute({ loadedPromise, page, setPage }) {
             ) : (
               <p>Carregando …</p>
             )}
-            <button onClick={() => setFocusedOrder()}>Fechar</button>
+            <CloseModalButton onClick={() => setFocusedOrder()} />
           </div>
         </Modal>
       ) : null}
     </div>
+  );
+}
+
+function CloseModalButton({ onClick }) {
+  const closeBtnRef = useRef(null);
+
+  useEffect(() => {
+    if (closeBtnRef.current) {
+      setTimeout(() => {
+        closeBtnRef.current.focus();
+      }, 0);
+    }
+    const trapFocus = (e) => {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        closeBtnRef.current.focus();
+      }
+    };
+    const btn = closeBtnRef.current;
+    if (btn) {
+      btn.addEventListener("keydown", trapFocus);
+    }
+    return () => {
+      if (btn) {
+        btn.removeEventListener("keydown", trapFocus);
+      }
+    };
+  }, []);
+
+  return (
+    <button
+      ref={closeBtnRef}
+      onClick={onClick}
+      aria-label="Fechar modal"
+      autoFocus
+    >
+      Fechar
+    </button>
   );
 }
