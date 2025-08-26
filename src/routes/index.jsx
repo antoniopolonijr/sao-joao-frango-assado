@@ -1,13 +1,19 @@
-import { createLazyFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createLazyFileRoute("/")({
+export const Route = createFileRoute("/")({
   component: Index,
 });
 
 function Index() {
   return (
     <div className="index">
-      <img src="../favicon.svg" alt="São João Frango Assado" />
+      <img
+        src="../foods/sao_joao_frango_assado.svg"
+        alt="São João Frango Assado"
+        fetchPriority="high"
+        height="200"
+        width="200"
+      />
       <ul>
         <li>
           <Link to="/order">Faça Seu Pedido</Link>

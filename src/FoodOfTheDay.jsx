@@ -27,6 +27,8 @@ const FoodOfTheDay = () => {
           className="food-of-the-day-image"
           src={foodOfTheDay.image}
           alt={foodOfTheDay.name}
+          height="200"
+          width="200"
         />
       </div>
     </div>

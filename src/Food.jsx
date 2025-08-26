@@ -6,6 +6,8 @@ const Food = (props) => {
       <img
         src={props.image ? props.image : "https://picsum.photos/200"}
         alt={props.name}
+        height="200"
+        width="200"
       />
     </div>
   );
