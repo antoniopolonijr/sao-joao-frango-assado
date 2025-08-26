@@ -117,7 +117,12 @@ function PastOrdersRoute({ loadedPromise, page, setPage }) {
                   {pastOrderData.orderItems.map((food) => (
                     <tr key={`${food.foodTypeId}_${food.size}`}>
                       <td>
-                        <img src={food.image} alt={food.name} />
+                        <img
+                          src={food.image}
+                          alt={food.name}
+                          height="50"
+                          width="50"
+                        />
                       </td>
                       <td>{food.name}</td>
                       <td>{food.size}</td>

@@ -43,6 +43,7 @@ nav {
   border-bottom: 1px solid #ccc;
   grid-template-areas: ". logo logo logo cart";
   padding: 10px;
+  height: 150px;
 }
 
 .logo {
@@ -94,7 +95,8 @@ nav > a {
 
 @font-face {
   font-family: Pacifico;
-  src: url("/Pacifico-Regular.ttf");
+  src: url("/Pacifico-Regular.ttf") format("truetype");
+  font-display: swap;
 }
 
 h2 {
@@ -226,15 +228,16 @@ button:disabled {
   color: var(--primary);
   font-family: var(--font);
   margin: 25px 0 15px 0;
+  height: 420px;
 }
 
 .food-of-the-day > div {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
   padding: 10px;
   margin: auto;
+  max-width: 600px;
 }
 
 .food-of-the-day > h2 {
@@ -243,7 +246,6 @@ button:disabled {
 }
 
 .food-of-the-day-image {
-  max-width: 200px;
   border-radius: 5px;
   border: 1px solid var(--border);
 }
@@ -295,13 +297,15 @@ button:disabled {
 }
 
 .index {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  max-width: 700px;
+  max-width: 600px;
   padding: 10px;
   margin: auto;
   align-items: center;
+  align-content: center;
+  height: 378px;
 }
 
 .index-brand p {
@@ -322,7 +326,7 @@ button:disabled {
 .index li,
 .index li a {
   width: 100%;
-  max-width: 250px;
+  width: 200px;
   text-align: center;
 }
 
@@ -540,14 +544,6 @@ td img {
     font-size: 22px;
   }
 
-  .food img {
-    max-width: 100%;
-  }
-
-  .food-of-the-day-image {
-    max-width: 150px;
-  }
-
   #modal .modal-content {
     max-width: 98vw;
     max-height: 98vh;
@@ -561,7 +557,8 @@ td img {
   }
 
   .index {
-    display: block;
+    flex-direction: column;
+    text-align: center;
   }
 
   .food-of-the-day > div {
